@@ -302,13 +302,27 @@ function createParticles({object, color, fades}) {
     }
 }
 
+let msPrev = window.performance.now()
+const fps = 60
+const msPerFrame = 1000 / fps
 
 function animate() {
     if (!game.active) return
-    requestAnimationFrame(animate)
+    window.requestAnimationFrame(animate)
+
+    const msNow = window.performance.now()
+    const msPassed = msNow - msPrev
+
+    if (msPassed < msPerFrame) return
+
+    const excessTime = msPassed % msPerFrame
+     msPrev = msNow - excessTime
+
+
     c.fillStyle = 'black'
     c.fillRect(0, 0, canvas.width, canvas.height)
     player.update();
+
     particles.forEach((particle, i) => {
         if (particle.position.y - particle.radius >= canvas.height) {
             particle.position.x = Math.random() * canvas.width
