@@ -301,7 +301,7 @@ function createParticles({object, color, fades}) {
         )
     }
 }
-
+//
 let msPrev = window.performance.now()
 const fps = 60
 const msPerFrame = 1000 / fps
@@ -360,7 +360,7 @@ function animate() {
             setTimeout(() => {
                 game.active = false
             }, 1000)
-
+            // player explodes
             createParticles({
                 object: player,
                 color: 'yellow',
@@ -382,7 +382,7 @@ function animate() {
     grids.forEach((grid, gridIndex) => {
         grid.update()
 
-         //spawn  projectiles
+         //spawn projectiles
         if (frames % 100 === 0 && grid.invaders.length > 0) {
             grid.invaders[Math.floor(Math.random() * grid.invaders.length)].shoot(invaderProjectiles)
         }
@@ -430,7 +430,7 @@ function animate() {
             })
         })
     })
-
+//movement
     if (keys.a.pressed && player.position.x >= 0) {
         player.velocity.x = -7
         player.rotation = -0.15
@@ -456,6 +456,8 @@ function animate() {
 
 animate();
 
+
+// for movement
 addEventListener('keydown', ({key}) => {
     if (game.over) return
 
