@@ -319,7 +319,7 @@ function animate() {
      msPrev = msNow - excessTime
 
 
-    c.fillStyle = 'black'
+    c.fillStyle = '#150c25'
     c.fillRect(0, 0, canvas.width, canvas.height)
     player.update();
 
