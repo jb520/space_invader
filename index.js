@@ -456,6 +456,19 @@ function animate() {
 
 animate();
 
+let startDiv = document.getElementById("start");
+let gameCanvas = document.getElementById("canvas");
+let gameOver = document.getElementById("game-over");
+
+
+addEventListener('click', function startGame() {
+    startDiv.style.display = "none";
+    gameCanvas.style.display = "block";
+    gameOver.style.display = "none";
+    game.active = true;
+});
+
+
 
 // for movement
 addEventListener('keydown', ({key}) => {
