@@ -262,11 +262,12 @@ let frames = 0
 let randomInterval = Math.floor(Math.random() * 500 + 500)
 let game = {
     over: false,
-    active: true
+    active: false
 }
 
 let score = 0
 
+// background particles
 for (let i = 0; i < 100; i++) {
     particles.push(new Particle({
         position: {
@@ -301,13 +302,15 @@ function createParticles({object, color, fades}) {
         )
     }
 }
+
 //
 let msPrev = window.performance.now()
 const fps = 60
 const msPerFrame = 1000 / fps
 
 function animate() {
-    if (!game.active) return
+    if (game.active = false) return;
+
     window.requestAnimationFrame(animate)
 
     const msNow = window.performance.now()
@@ -460,13 +463,13 @@ function animate() {
     frames++
 };
 
-animate();
+
 
 let startDiv = document.getElementById("start");
 let gameCanvas = document.getElementById("canvas");
 let gameOver = document.getElementById("game-over");
 
-
+//start game
 startDiv.addEventListener('click', function startGame() {
     if (game.over) return
 
@@ -474,6 +477,7 @@ startDiv.addEventListener('click', function startGame() {
     gameCanvas.style.display = "block";
     gameOver.style.display = "none";
     game.active = true;
+    animate();
 });
 
 
