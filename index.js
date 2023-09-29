@@ -350,7 +350,8 @@ function animate() {
         if (invaderProjectile.position.y + invaderProjectile.height >= 
             player.position.y && invaderProjectile.position.x + invaderProjectile.width >= 
             player.position.x && invaderProjectile.position.x <= player.position.x + player.width
-            ) {
+            ) { 
+            //remove player
             setTimeout(() => {
                 invaderProjectiles.splice(index, 1)
                 player.opacity = 0
@@ -359,6 +360,11 @@ function animate() {
             // game over
             setTimeout(() => {
                 game.active = false
+                
+                startDiv.style.display = "none";
+                gameCanvas.style.display = "none";
+                gameOver.style.display = "block";
+
             }, 1000)
             // player explodes
             createParticles({
@@ -461,12 +467,16 @@ let gameCanvas = document.getElementById("canvas");
 let gameOver = document.getElementById("game-over");
 
 
-addEventListener('click', function startGame() {
+startDiv.addEventListener('click', function startGame() {
+    if (game.over) return
+
     startDiv.style.display = "none";
     gameCanvas.style.display = "block";
     gameOver.style.display = "none";
     game.active = true;
 });
+
+
 
 
 
